@@ -1,9 +1,16 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Logo from '../../components/Logo'
-
+import Logo from 'components/Logo'
+import { motion } from 'framer-motion'
+import { Cursor, useTypewriter } from 'react-simple-typewriter'
+import BackgroundEffect from 'components/BackgroundEffect'
 
 export default function Home() {
+  const [text, count] = useTypewriter({
+    words: ['Traveling', 'Coffee', 'Typewriters'],
+    loop: true,
+    delaySpeed: 2000
+  })
   return (
     <>
       <Head>
@@ -12,25 +19,65 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='bg-black w-full h-screen'>
-        <div className="container mx-auto">
-          <div className="w-96 h-96 mx-auto pt-12">
-            <Logo className='mx-auto fill-primary' />
-          </div>
-          <h1 className='text-center text-9xl text-white font-display uppercase tracking-wide'>Addison<span className='text-primary'>.</span>Codes</h1>
+      <main className="w-full h-screen bg-black selection:text-primary selection:bg-accent">
+        <section id="hero" className="container mx-auto">
+          <motion.div
+            initial={{
+              y: 800,
+              opacity: 0,
+              scale: 2.2
+            }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              scale: 1
+            }}
+            transition={{
+              duration: 1.5
+            }}
+            className="pt-12 mx-auto w-96 h-96"
+          >
+            <Logo className="mx-auto transition duration-700 animate-pulse fill-primary hover:fill-accent" />
+          </motion.div>
+          <BackgroundEffect />
+          <h1 className="tracking-wide text-center text-white uppercase text-9xl font-display">
+            Addison<span className="text-primary">.</span>Codes
+          </h1>
           <div className="flex mt-20 justify-evenly">
-          <div className="flex flex-wrap justify-center">
-  <div className="rounded-full border-4 border-accent -rotate-6">
-    <Image width={320} height={320} src="/hoodiePic.jpg" alt="Addison in a hoodie" className="shadow rounded-full max-w-full h-auto align-middle border-none" />
-  </div>
-</div>
-<div>
-  <h2 className="text-5xl text-white text-center">Hi! <span className="italic">I&apos;m <span className="text-accent underline">Addison</span></span>.</h2>
-  <h3 className="text-4xl pt-12 text-white text-center">I write <span className="text-secondary">code</span>.</h3>
-  <h3 className="text-3xl pt-32 text-white text-center">And do other things...</h3>
-</div>
+            <div className="flex flex-wrap justify-center">
+              <div className="border-4 rounded-full border-accent -rotate-6">
+                <Image
+                  width={320}
+                  height={320}
+                  src="/hoodiePic.jpg"
+                  alt="Addison in a hoodie"
+                  className="h-auto max-w-full align-middle border-none rounded-full shadow"
+                />
+              </div>
+            </div>
+            <div>
+              <h2 className="text-5xl text-center text-white">
+                Hi!{' '}
+                <span className="italic">
+                  I&apos;m{' '}
+                  <span className="underline text-accent">Addison</span>
+                </span>
+                .
+              </h2>
+              <h3 className="pt-12 text-4xl text-center text-white">
+                I write <span className="text-secondary">code</span>.
+              </h3>
+              <h3 className="pt-20 text-3xl text-center text-white">
+                And do other things...
+                <br />
+                <span className="text-accent">
+                  {text}
+                  <Cursor cursorColor="#BB4430" />
+                </span>
+              </h3>
+            </div>
           </div>
-        </div>
+        </section>
       </main>
     </>
   )
