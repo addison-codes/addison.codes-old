@@ -4,13 +4,15 @@ import { Space_Mono, Space_Grotesk } from '@next/font/google'
 const spaceMono = Space_Mono(
   {
   weight: '700',
-  subsets: ['latin']
+  subsets: ['latin'],
+  display: 'swap'
   }
 )
 const spaceGrotesk = Space_Grotesk(
   {
   weight: '700',
-  subsets: ['latin']
+  subsets: ['latin'],
+  display: 'swap'
   }
 )
 
