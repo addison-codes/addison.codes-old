@@ -39,7 +39,7 @@ export default function Home() {
           >
             <Logo className="mx-auto transition duration-700 animate-pulse fill-primary hover:fill-accent" />
           </motion.div>
-          <BackgroundEffect />
+          {/* <BackgroundEffect /> */}
           <h1 className="tracking-wide text-center text-white uppercase text-9xl font-display">
             Addison<span className="text-primary">.</span>Codes
           </h1>
